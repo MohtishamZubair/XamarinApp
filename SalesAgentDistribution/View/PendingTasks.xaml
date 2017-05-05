@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SalesAgentDistribution.View.PendingTasks"
+             Title ="Pendings" 
+             x:Name ="PendingTasks">
+  <StackLayout Orientation="Vertical"  Padding="5">
+    <Label Text="{Binding Subheading}" BackgroundColor="White" VerticalOptions="Center" HorizontalOptions="Center" FontSize="25" />
+    
+    <ListView ItemsSource="{Binding PendingActivities}" HasUnevenRows="True" VerticalOptions="FillAndExpand">
+      <ListView.ItemTemplate>
+        <DataTemplate>
+          <ViewCell>
+            <StackLayout Orientation="Horizontal">
+              <Grid Padding="5" BackgroundColor="Gray">
+                <Label Text="{Binding ActivityId}" FontSize="20" TextColor="White"></Label>
+              </Grid>
+              <StackLayout Orientation="Vertical"   HorizontalOptions="FillAndExpand" >
+                <Grid>
+                <Label  Text="{Binding ActivityActionName}" FontSize="10" TextColor="Black" HorizontalTextAlignment="End"  ></Label>
+                <Label  Text="{Binding CreatedDate}" FontSize="15" TextColor="Black"  HorizontalTextAlignment="Start"></Label>
+                </Grid>
+                <Button HorizontalOptions="End"  FontSize="10" Text="Update Activity" Command="{Binding Path=BindingContext.CompleteActivityAsync, Source={x:Reference Name=PendingTasks}}" CommandParameter="{Binding .}" />
+              </StackLayout>
+            </StackLayout>
+          </ViewCell>
+        </DataTemplate>
+      </ListView.ItemTemplate>
+    </ListView>
+  </StackLayout>
+</ContentPage>

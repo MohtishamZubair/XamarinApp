@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SalesAgentDistribution.View.MainPage"
+             xmlns:local="clr-namespace:SalesAgentDistribution.Controls;assembly=SalesAgentDistribution"
+             >  
+  <ScrollView>
+  <StackLayout Orientation="Vertical"  Padding="5"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+    <ListView x:Name="listView"
+              ItemsSource="{Binding Deliveries}"
+              HasUnevenRows="True"
+              RowHeight="300"
+              ItemTapped="OnEditDelivery"
+              ItemSelected="OnSelection">
+      <ListView.ItemTemplate>
+        <DataTemplate>
+          <ViewCell>
+            <Grid Padding="5" >
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+              </Grid.ColumnDefinitions>
+              <StackLayout  Spacing="4" VerticalOptions="Center">
+                <Grid>
+                  <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="7*"/>
+                  </Grid.ColumnDefinitions>
+                  <Label Grid.Row="0" Grid.Column="0" Text="Status : "  FontSize="Small" LineBreakMode="NoWrap"/>
+                  <Label Grid.Row="0" Grid.Column="1" Text="{Binding Status}"  FontSize="Small" LineBreakMode="NoWrap"/>
+                  <Label Grid.Row="1" Grid.Column="0" Text="Notes : " FontSize="Small" LineBreakMode="NoWrap"/>
+                  <Label Grid.Row="1" Grid.Column="1" Text="{Binding Notes}" FontSize="Small" LineBreakMode="WordWrap" />
+                  </Grid>
+                  </StackLayout>
+            </Grid>
+          </ViewCell>
+        </DataTemplate>
+      </ListView.ItemTemplate>
+    </ListView>  
+    </StackLayout>
+    </ScrollView>
+</ContentPage>
+ 
